@@ -45,6 +45,7 @@
             // 
             // uxSet
             // 
+            this.uxSet.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.uxSet.Location = new System.Drawing.Point(215, 71);
             this.uxSet.Name = "uxSet";
             this.uxSet.Size = new System.Drawing.Size(75, 35);

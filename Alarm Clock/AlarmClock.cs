@@ -10,9 +10,10 @@ using System.Windows.Forms;
 
 namespace Alarm_Clock
 {
-    public partial class Form1 : Form
+    public partial class AlarmClock : Form
     {
-        public Form1()
+        
+        public AlarmClock()
         {
             InitializeComponent();
         }
@@ -23,6 +24,20 @@ namespace Alarm_Clock
         }
 
         private void uxStop_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void uxAdd_Click(object sender, EventArgs e)
+        {
+            AddEditAlarm alarm = new AddEditAlarm();
+            if(alarm.ShowDialog() == DialogResult.OK)
+            {
+                uxAlarmList.Items.Add(alarm.Time);
+            }
+        }
+
+        private void uxEdit_Click(object sender, EventArgs e)
         {
 
         }

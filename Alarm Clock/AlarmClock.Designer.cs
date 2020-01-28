@@ -1,6 +1,6 @@
 ﻿namespace Alarm_Clock
 {
-    partial class Form1
+    partial class AlarmClock
     {
         /// <summary>
         /// Required designer variable.
@@ -44,6 +44,7 @@
             this.uxEdit.TabIndex = 0;
             this.uxEdit.Text = "Edit";
             this.uxEdit.UseVisualStyleBackColor = true;
+            this.uxEdit.Click += new System.EventHandler(this.uxEdit_Click);
             // 
             // uxAdd
             // 
@@ -54,12 +55,14 @@
             this.uxAdd.TabIndex = 0;
             this.uxAdd.Text = "+";
             this.uxAdd.UseVisualStyleBackColor = true;
+            this.uxAdd.Click += new System.EventHandler(this.uxAdd_Click);
             // 
             // uxAlarmList
             // 
             this.uxAlarmList.FormattingEnabled = true;
             this.uxAlarmList.Location = new System.Drawing.Point(12, 104);
             this.uxAlarmList.Name = "uxAlarmList";
+            this.uxAlarmList.ScrollAlwaysVisible = true;
             this.uxAlarmList.Size = new System.Drawing.Size(214, 147);
             this.uxAlarmList.TabIndex = 1;
             // 
@@ -76,6 +79,7 @@
             // 
             // uxStop
             // 
+            this.uxStop.Enabled = false;
             this.uxStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxStop.Location = new System.Drawing.Point(150, 284);
             this.uxStop.Name = "uxStop";
@@ -85,7 +89,7 @@
             this.uxStop.UseVisualStyleBackColor = true;
             this.uxStop.Click += new System.EventHandler(this.uxStop_Click);
             // 
-            // Form1
+            // AlarmClock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -95,7 +99,7 @@
             this.Controls.Add(this.uxStop);
             this.Controls.Add(this.uxSnooze);
             this.Controls.Add(this.uxEdit);
-            this.Name = "Form1";
+            this.Name = "AlarmClock";
             this.Text = "Alarms";
             this.ResumeLayout(false);
 

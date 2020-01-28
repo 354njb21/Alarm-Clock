@@ -12,6 +12,14 @@ namespace Alarm_Clock
 {
     public partial class AddEditAlarm : Form
     {
+        private string time;
+
+        public string Time
+        {
+            get { return time; }
+            set { time = value; }
+        }
+
         public AddEditAlarm()
         {
             InitializeComponent();
@@ -19,7 +27,7 @@ namespace Alarm_Clock
 
         private void uxSet_Click(object sender, EventArgs e)
         {
-
+            Time = uxTime.Text;
         }
     }
 }

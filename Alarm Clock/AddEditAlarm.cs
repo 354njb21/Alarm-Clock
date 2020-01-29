@@ -20,9 +20,15 @@ namespace Alarm_Clock
             set { time = value; }
         }
 
+        AlarmClock clock = new AlarmClock();
+
         public AddEditAlarm()
         {
             InitializeComponent();
+            if(clock.CurItem != null)
+            {
+                uxTime.Text.Replace(uxTime.Text, clock.CurItem); 
+            }
         }
 
         private void uxSet_Click(object sender, EventArgs e)

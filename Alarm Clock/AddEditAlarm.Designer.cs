@@ -31,7 +31,7 @@
             this.uxCancel = new System.Windows.Forms.Button();
             this.uxSet = new System.Windows.Forms.Button();
             this.uxTime = new System.Windows.Forms.DateTimePicker();
-            this.uxOnButton = new System.Windows.Forms.RadioButton();
+            this.uxRadioButton = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // uxCancel
@@ -63,23 +63,23 @@
             this.uxTime.TabIndex = 1;
             this.uxTime.Value = new System.DateTime(2020, 1, 24, 21, 25, 36, 0);
             // 
-            // uxOnButton
+            // uxRadioButton
             // 
-            this.uxOnButton.AutoSize = true;
-            this.uxOnButton.Location = new System.Drawing.Point(218, 31);
-            this.uxOnButton.Name = "uxOnButton";
-            this.uxOnButton.Size = new System.Drawing.Size(39, 17);
-            this.uxOnButton.TabIndex = 2;
-            this.uxOnButton.TabStop = true;
-            this.uxOnButton.Text = "On";
-            this.uxOnButton.UseVisualStyleBackColor = true;
+            this.uxRadioButton.AutoSize = true;
+            this.uxRadioButton.Location = new System.Drawing.Point(218, 31);
+            this.uxRadioButton.Name = "uxRadioButton";
+            this.uxRadioButton.Size = new System.Drawing.Size(39, 17);
+            this.uxRadioButton.TabIndex = 2;
+            this.uxRadioButton.TabStop = true;
+            this.uxRadioButton.Text = "On";
+            this.uxRadioButton.UseVisualStyleBackColor = true;
             // 
             // AddEditAlarm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(302, 118);
-            this.Controls.Add(this.uxOnButton);
+            this.Controls.Add(this.uxRadioButton);
             this.Controls.Add(this.uxTime);
             this.Controls.Add(this.uxSet);
             this.Controls.Add(this.uxCancel);
@@ -95,6 +95,6 @@
         private System.Windows.Forms.Button uxCancel;
         private System.Windows.Forms.Button uxSet;
         private System.Windows.Forms.DateTimePicker uxTime;
-        private System.Windows.Forms.RadioButton uxOnButton;
+        private System.Windows.Forms.RadioButton uxRadioButton;
     }
 }

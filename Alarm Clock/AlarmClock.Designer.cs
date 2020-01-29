@@ -37,6 +37,7 @@
             // 
             // uxEdit
             // 
+            this.uxEdit.Enabled = false;
             this.uxEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxEdit.Location = new System.Drawing.Point(12, 12);
             this.uxEdit.Name = "uxEdit";
@@ -68,6 +69,7 @@
             // 
             // uxSnooze
             // 
+            this.uxSnooze.Enabled = false;
             this.uxSnooze.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxSnooze.Location = new System.Drawing.Point(12, 284);
             this.uxSnooze.Name = "uxSnooze";
@@ -109,9 +111,9 @@
 
         private System.Windows.Forms.Button uxEdit;
         private System.Windows.Forms.Button uxAdd;
-        private System.Windows.Forms.ListBox uxAlarmList;
         private System.Windows.Forms.Button uxSnooze;
         private System.Windows.Forms.Button uxStop;
+        public System.Windows.Forms.ListBox uxAlarmList;
     }
 }
 

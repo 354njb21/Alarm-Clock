@@ -12,6 +12,7 @@ namespace Alarm_Clock
 {
     public partial class AlarmClock : Form
     {
+        System.Timers.Timer clock;
 
         private string curItem;
 
@@ -33,6 +34,7 @@ namespace Alarm_Clock
         }
 
         
+       
 
         private void uxSnooze_Click(object sender, EventArgs e)
         {
@@ -49,9 +51,9 @@ namespace Alarm_Clock
             AddEditAlarm alarm = new AddEditAlarm();
             if(alarm.ShowDialog() == DialogResult.OK)
             {
-                if(uxAlarmList.Items.Count != 10)
+                if(alarms.Count != 10)
                 {
-                    uxAlarmList.Items.Add(alarm.Time);
+                    alarms.Add(alarm.Time);
                 }
                 
             }
@@ -63,16 +65,15 @@ namespace Alarm_Clock
             
             if(uxAlarmList.SelectedItem != null)
             {
-                CurItem = uxAlarmList.SelectedItem.ToString();
-
                 AddEditAlarm addEdit = new AddEditAlarm();
+                CurItem = uxAlarmList.SelectedItem.ToString();
 
                 if (addEdit.ShowDialog() == DialogResult.OK)
                 {
+                    alarms.Remove(CurItem);
                     CurItem = addEdit.Time;
-                    int x = uxAlarmList.SelectedIndex;
-                    uxAlarmList.Items.RemoveAt(x);
-                    uxAlarmList.Items.Insert(x, CurItem);
+                    alarms.Add(CurItem);
+                   
                 }
             }
             else
@@ -81,5 +82,7 @@ namespace Alarm_Clock
             }
             
         }
+
+        private void 
     }
 }

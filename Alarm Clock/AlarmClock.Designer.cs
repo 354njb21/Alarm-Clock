@@ -103,6 +103,8 @@
             this.Controls.Add(this.uxEdit);
             this.Name = "AlarmClock";
             this.Text = "Alarms";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AlarmClock_FormClosed);
+            this.Load += new System.EventHandler(this.AlarmClock_Load);
             this.ResumeLayout(false);
 
         }

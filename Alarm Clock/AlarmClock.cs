@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace Alarm_Clock
 {
     public partial class AlarmClock : Form
     {
-        System.Timers.Timer clock;
+        
 
         private string curItem;
 
@@ -53,7 +54,15 @@ namespace Alarm_Clock
             {
                 if(alarms.Count != 10)
                 {
-                    alarms.Add(alarm.Time);
+                    if(alarm.Run == true)
+                    {
+                        alarms.Add(alarm.Time + "  Running");
+                    }
+                    else
+                    {
+                        alarms.Add(alarm.Time);
+                    }
+                    
                 }
                 
             }
@@ -65,14 +74,16 @@ namespace Alarm_Clock
             
             if(uxAlarmList.SelectedItem != null)
             {
-                AddEditAlarm addEdit = new AddEditAlarm();
-                CurItem = uxAlarmList.SelectedItem.ToString();
-
+                int index = uxAlarmList.SelectedIndex;
+                
+                curItem = uxAlarmList.SelectedItem.ToString();
+                
+                AddEditAlarm addEdit = new AddEditAlarm(curItem);
                 if (addEdit.ShowDialog() == DialogResult.OK)
                 {
-                    alarms.Remove(CurItem);
-                    CurItem = addEdit.Time;
-                    alarms.Add(CurItem);
+                    alarms.RemoveAt(index);
+                    curItem = addEdit.Time;
+                    alarms.Insert(index, curItem);
                    
                 }
             }
@@ -83,6 +94,28 @@ namespace Alarm_Clock
             
         }
 
-        private void 
+        private void AlarmClock_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AlarmClock_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            SaveFileDialog save = new SaveFileDialog();
+
+            if(save.ShowDialog() == DialogResult.OK)
+            {
+                StreamWriter writer = new StreamWriter(save.FileName);
+
+                if(alarms.Count > 0)
+                {
+                    for(int i = 0; i < alarms.Count; i++)
+                    {
+                        writer.WriteLine(alarms[i]);
+                    }
+                    writer.Close();
+                }
+            }
+        }
     }
 }

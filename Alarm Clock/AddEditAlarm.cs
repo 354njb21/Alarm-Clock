@@ -20,17 +20,36 @@ namespace Alarm_Clock
             set { time = value; }
         }
 
+        private bool run;
+
+        public bool Run
+        {
+            get { return run; }
+            set { run = value; }
+        }
+
         AlarmClock clock = new AlarmClock();
 
         public AddEditAlarm()
         {
             InitializeComponent();
-            
+            uxTime.Value = DateTime.Now;
+        }
+
+        public AddEditAlarm(string edit)
+        {
+            InitializeComponent();
+            DateTime dateTime = Convert.ToDateTime(edit);
+            uxTime.Value = dateTime;
         }
 
         private void uxSet_Click(object sender, EventArgs e)
         {
-            Time = uxTime.Text;
+            time = uxTime.Text;
+            if(uxRadioButton.Checked == true)
+            {
+                run = true;
+            }
         }
     }
 }

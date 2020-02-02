@@ -53,7 +53,7 @@ namespace Alarm_Clock
         }
 
         int hour, minute, second;
-        TimeSpan timeOfDay;
+        
         
        
         /// <summary>
@@ -63,7 +63,15 @@ namespace Alarm_Clock
         /// <param name="e"></param>
         private void uxSnooze_Click(object sender, EventArgs e)
         {
-           
+            curItem = uxAlarmList.SelectedItem.ToString();
+            int index = uxAlarmList.SelectedIndex;
+            string trim = curItem.Substring(0, 11);
+            DateTime snooze = Convert.ToDateTime(trim);
+            status = " Snoozed";
+            DateTime five = snooze.AddMinutes(5);
+            alarms.RemoveAt(index);
+            alarms.Insert(index, five.ToLongTimeString() + status);
+            timer1.Start();
         }
 
         /// <summary>
@@ -76,11 +84,13 @@ namespace Alarm_Clock
             int index = uxAlarmList.SelectedIndex;
 
             curItem = uxAlarmList.SelectedItem.ToString();
-            curItem = curItem.Substring(0, 10);
+            curItem = curItem.Substring(0, 11);
 
             status = " Stopped";
             alarms.RemoveAt(index);
             alarms.Insert(index, curItem + status);
+
+            timer1.Start();
         }
 
         /// <summary>
@@ -163,7 +173,11 @@ namespace Alarm_Clock
         /// <param name="e"></param>
         private void AlarmClock_Load(object sender, EventArgs e)
         {
-
+            //string[] file = File.ReadAllLines(path);
+            //for(int i = 0; i < file.Length; i++)
+            //{
+              //  alarms.Add(file[i]);
+            //}
             
         }
 
@@ -172,11 +186,15 @@ namespace Alarm_Clock
             hour = DateTime.Now.Hour;
             minute = DateTime.Now.Minute;
             second = DateTime.Now.Second;
-            timeOfDay = DateTime.Now.TimeOfDay;
+            if (hour > 12)
+            {
+                
+            }
             if (uxAlarmList.Items.Count > 0)
             {
                 Alarm_Going_Off();
             }
+            
 
         }
 
@@ -187,15 +205,18 @@ namespace Alarm_Clock
             {
                 if (s.Contains("Running") == true)
                 {
+                    
                     string check = s;
-                    check = check.Substring(0, 10);
+                    check = check.Substring(0, 11);
+                    
                     DateTime userTime = Convert.ToDateTime(check);
-                    if (userTime.Hour == hour && userTime.Minute == minute && userTime.Second == second && userTime.TimeOfDay == timeOfDay)
+                    if (userTime.Hour.Equals(hour) && userTime.Minute.Equals(minute) && userTime.Second.Equals(second))
                     {
-                        MessageBox.Show(userTime + "alarm is going off");
+                        timer1.Stop();
+                        MessageBox.Show(userTime + " alarm is going off");
                         uxSnooze.Enabled = true;
                         uxStop.Enabled = true;
-
+                        
                     }
 
                 }
@@ -235,13 +256,18 @@ namespace Alarm_Clock
         /// <param name="e"></param>
         private void AlarmClock_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
-
-            using (StreamWriter sw = File.AppendText(path))
-            {
-
-            }
-
+            int num = alarms.Count;
+            string[] done = new string[num]; 
+           // using (StreamWriter sw = File.WriteAllText(path))
+            //{
+                for(int i = 0; i < alarms.Count; i++)
+                {
+                done[i] = alarms[i];
+                    //sw.WriteLine(alarms[i]);
+                }
+            File.WriteAllLines(path, done);
+            //}
+            alarms.Clear();
                 
         }
     }

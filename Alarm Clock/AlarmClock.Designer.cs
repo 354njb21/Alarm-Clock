@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.uxEdit = new System.Windows.Forms.Button();
             this.uxAdd = new System.Windows.Forms.Button();
             this.uxAlarmList = new System.Windows.Forms.ListBox();
             this.uxSnooze = new System.Windows.Forms.Button();
             this.uxStop = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // uxEdit
@@ -91,6 +93,12 @@
             this.uxStop.UseVisualStyleBackColor = true;
             this.uxStop.Click += new System.EventHandler(this.uxStop_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // AlarmClock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -116,6 +124,7 @@
         private System.Windows.Forms.Button uxSnooze;
         private System.Windows.Forms.Button uxStop;
         public System.Windows.Forms.ListBox uxAlarmList;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

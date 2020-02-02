@@ -57,7 +57,7 @@ namespace Alarm_Clock
         
        
         /// <summary>
-        /// 
+        /// Adds 5 minutes to the alarm and the timer is started again
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -75,7 +75,7 @@ namespace Alarm_Clock
         }
 
         /// <summary>
-        /// 
+        /// Stops the alarm, status is changed and the timer is started again
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -94,7 +94,7 @@ namespace Alarm_Clock
         }
 
         /// <summary>
-        /// 
+        /// The second form pops up and the user is able to set an alarm
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -124,7 +124,7 @@ namespace Alarm_Clock
         }
 
         /// <summary>
-        /// 
+        /// When the edit button is clicked the second form is loaded and the user can edit the alarm
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -167,7 +167,7 @@ namespace Alarm_Clock
         }
 
         /// <summary>
-        /// 
+        /// When the form is loaded then the alarms are loaded
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -203,7 +203,7 @@ namespace Alarm_Clock
             
             foreach (string s in alarms)
             {
-                if (s.Contains("Running") == true)
+                if (s.Contains("Running") == true || s.Contains("Snoozed")== true)
                 {
                     
                     string check = s;
@@ -223,34 +223,10 @@ namespace Alarm_Clock
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /*private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            DateTime curTime = DateTime.Now;
-            foreach (string s in uxAlarmList.Items)
-            {
-                if (s.Contains(" Running") == true)
-                {
-                    curItem = s.Substring(0, 10);
-                    DateTime userTime = Convert.ToDateTime(curItem);
-                    if(curTime.Hour == userTime.Hour && curTime.Minute == userTime.Minute && curTime.Second == userTime.Second && curTime.TimeOfDay == userTime.TimeOfDay)
-                    {
-                        MessageBox.Show(userTime + "alarm is going off");
-                        uxSnooze.Enabled = true;
-                        uxStop.Enabled = true;
-                        
-                    }
-
-                }
-            }
-        }*/
+        
 
         /// <summary>
-        /// 
+        /// When the form is closed the alarms are written to the text file
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

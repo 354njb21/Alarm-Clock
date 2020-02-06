@@ -16,7 +16,7 @@ namespace Alarm_Clock
     /// </summary>
     public partial class AlarmClock : Form
     {
-        string path = @"C:\Users\19132\source\repos\alarm-clock\Alarm Clock\AlarmList.txt";
+        string path = @"C:\Users\19132\Source\Repos\354njb21_CW_CIS501\Proj1\alarm-clock\Alarm Clock\AlarmList.txt";
 
         /// <summary>
         /// Private variable for the status of an alarm
